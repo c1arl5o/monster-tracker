@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import BurgerMenu from './BurgerMenu';
 import './Home.css';
 
 function Home() {
+  const navigate = useNavigate();
   const [allRows, setAllRows] = useState([]);
   const [userRows, setUserRows] = useState([]);
   const [userId, setUserId] = useState(null);
@@ -69,6 +71,10 @@ function Home() {
           {JSON.stringify(userRows, null, 2)}
         </pre>
       </div>
+
+      <button className="new-monster-btn" onClick={() => navigate('/new-monster')}>
+        + New Monster
+      </button>
     </div>
   );
 }
