@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import BurgerMenu from './BurgerMenu';
 import { monsters } from '../data/monsters';
 import './NewMonster.css';
+import { supabase } from '../supabaseClient';
+import imageCompression from 'browser-image-compression';
+import { v4 as uuidv4 } from 'uuid';
 
 function NewMonster() {
   const navigate = useNavigate();
@@ -12,6 +15,8 @@ function NewMonster() {
   const [selectedDateTime, setSelectedDateTime] = useState(null);
   const [customDate, setCustomDate] = useState('');
   const [customTime, setCustomTime] = useState('');
+  const [photoUrl, setPhotoUrl] = useState('');
+  const [uploading, setUploading] = useState(false);
 
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? null : section);
@@ -52,6 +57,48 @@ function NewMonster() {
       hour: '2-digit',
       minute: '2-digit'
     });
+  };
+
+  const handlePhotoUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
+
+    setUploading(true);
+
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    };
+
+    try {
+      const compressedFile = await imageCompression(file, options);
+      const fileName = `${uuidv4()}-${compressedFile.name}`;
+      
+      const { data, error } = await supabase.storage
+        .from('feed-images')
+        .upload(fileName, compressedFile, {
+          cacheControl: '3600',
+          upsert: false,
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('feed-images')
+        .getPublicUrl(fileName);
+
+      setPhotoUrl(publicUrl);
+    } catch (error) {
+      console.error('Error uploading image:', error.message);
+    } finally {
+      setUploading(false);
+      setExpandedSection(null);
+    }
   };
 
   return (
@@ -142,12 +189,26 @@ function NewMonster() {
 
       <div className="form-section" onClick={() => toggleSection('photo')}>
         <h2 className="section-header">
-          3. Photo
+          3. Photo {photoUrl && <span className="selected-value">(✓)</span>}
           <span className="expand-icon">{expandedSection === 'photo' ? '−' : '+'}</span>
         </h2>
         {expandedSection === 'photo' && (
-          <div className="section-content">
-            {/* Content coming up */}
+          <div className="section-content" onClick={(e) => e.stopPropagation()}>
+            <input
+              type="file"
+              id="photo-upload"
+              accept="image/*"
+              onChange={handlePhotoUpload}
+              style={{ display: 'none' }}
+            />
+            <label htmlFor="photo-upload" className="upload-btn">
+              {uploading ? 'Uploading...' : 'Choose or Take Photo'}
+            </label>
+            {photoUrl && (
+              <div className="image-preview">
+                <img src={photoUrl} alt="Monster preview" />
+              </div>
+            )}
           </div>
         )}
       </div>
