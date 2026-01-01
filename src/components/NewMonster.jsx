@@ -224,13 +224,17 @@ function NewMonster() {
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Add any additional notes about this monster sighting..."
+              placeholder="Enter any additional notes here..."
               className="notes-textarea"
               rows="6"
             />
           </div>
         )}
       </div>
+
+      <button className="upload-btn-main">
+        Upload Monster
+      </button>
 
       <button className="back-btn" onClick={() => navigate('/')}>
         Back to Feed
