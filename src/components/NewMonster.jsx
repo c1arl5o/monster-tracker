@@ -17,6 +17,7 @@ function NewMonster() {
   const [customTime, setCustomTime] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
   const [uploading, setUploading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [notes, setNotes] = useState('');
 
   const toggleSection = (section) => {
@@ -99,6 +100,47 @@ function NewMonster() {
     } finally {
       setUploading(false);
       setExpandedSection(null);
+    }
+  };
+
+  const handleUpload = async () => {
+    if (!selectedMonster) {
+      alert('Please select a monster first!');
+      return;
+    }
+
+    setIsUploading(true);
+
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!user) {
+        throw new Error('User not found. Please log in again.');
+      }
+
+      const { error } = await supabase
+        .from('main')
+        .insert([
+          {
+            id: user.id,
+            which: selectedMonster,
+            date: selectedDateTime || new Date(),
+            photo_url: photoUrl,
+            notes: notes,
+          },
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      alert('Monster uploaded successfully!');
+      navigate('/');
+    } catch (error) {
+      console.error('Error uploading monster:', error.message);
+      alert(`Error: ${error.message}`);
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -232,8 +274,12 @@ function NewMonster() {
         )}
       </div>
 
-      <button className="upload-btn-main">
-        Upload Monster
+      <button 
+        className="upload-btn-main" 
+        onClick={handleUpload}
+        disabled={!selectedMonster || isUploading}
+      >
+        {isUploading ? 'Uploading...' : 'Upload Monster'}
       </button>
 
       <button className="back-btn" onClick={() => navigate('/')}>
