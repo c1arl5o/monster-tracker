@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './BurgerMenu.css';
 
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,8 +19,7 @@ function BurgerMenu() {
   };
 
   const handleNavigation = (page) => {
-    // Placeholder for navigation - implement routing later
-    console.log(`Navigate to ${page}`);
+    navigate(`/${page}`); // Use navigate for routing
     setIsOpen(false);
   };
 
@@ -39,8 +40,8 @@ function BurgerMenu() {
           <button className="menu-item" onClick={() => handleNavigation('home')}>
             Home
           </button>
-          <button className="menu-item" onClick={() => handleNavigation('stats')}>
-            Stats
+          <button className="menu-item" onClick={() => handleNavigation('new-monster')}>
+            New Monster
           </button>
           <button className="menu-item" onClick={() => handleNavigation('leaderboard')}>
             Leaderboard

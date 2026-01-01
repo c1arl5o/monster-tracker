@@ -8,6 +8,7 @@ import SignUp from './components/SignUp';
 import Home from './components/Home';
 import AuthCallback from './AuthCallback';
 import NewMonster from './components/NewMonster';
+import Leaderboard from './components/Leaderboard';
 
 function App() {
   const [session, setSession] = useState(null);
@@ -36,6 +37,7 @@ function App() {
           <Route path="/home" element={session ? <Home /> : <Navigate to="/" />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/new-monster" element={session ? <NewMonster /> : <Navigate to="/" />} />
+          <Route path="/leaderboard" element={session ? <Leaderboard /> : <Navigate to="/" />} />
         </Routes>
       </div>
     </Router>
