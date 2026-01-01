@@ -6,18 +6,37 @@ import './Login.css';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [sec_name, setSecName] = useState('');
+  const [fav_monster, setFavMonster] = useState('');
+  const [avatar_url, setAvatarUrl] = useState('');
   const [showConfirmationMessage, setShowConfirmationMessage] = useState(false);
 
   const handleSubmit = async (e, action) => {
     e.preventDefault();
     if (action === 'signup') {
-      const { error } = await supabase.auth.signUp({ email, password });
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            name,
+            sec_name,
+            fav_monster,
+            avatar_url,
+          },
+        }, 
+      });
       if (error) {
         alert(error.message);
       } else {
         setShowConfirmationMessage(true);
         setEmail('');
         setPassword('');
+        setName('');
+        setSecName('');
+        setFavMonster('');
+        setAvatarUrl('');
       }
     } else {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -38,6 +57,32 @@ function Login() {
         </div>
       ) : (
         <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+          {/* Show these inputs only when signing up, strictly speaking, 
+              but for now let's just add them to the form */}
+          
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="auth-input"
+          />
+          <input
+            type="text"
+            placeholder="Second Name"
+            value={sec_name}
+            onChange={(e) => setSecName(e.target.value)}
+            className="auth-input"
+          />
+          <input
+            type="text"
+            placeholder="Favorite Monster"
+            value={fav_monster}
+            onChange={(e) => setFavMonster(e.target.value)}
+            className="auth-input"
+          />
+          
+          {/* Existing inputs */}
           <input
             type="email"
             placeholder="Your email"
@@ -52,6 +97,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
             className="auth-input"
           />
+
           <div className="auth-buttons">
             <button onClick={(e) => handleSubmit(e, 'signup')}>Sign Up</button>
             <button onClick={(e) => handleSubmit(e, 'signin')}>Sign In</button>

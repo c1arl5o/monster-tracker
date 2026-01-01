@@ -55,7 +55,7 @@ function Home() {
     <div className="home-container">
       <BurgerMenu />
 
-      <h1 className="home-title">Monster Tracker</h1>
+      <h1 className="home-title">FEED</h1>
       <p className="user-info">Current User ID: {userId || 'Not logged in'}</p>
 
       <div className="data-section">
