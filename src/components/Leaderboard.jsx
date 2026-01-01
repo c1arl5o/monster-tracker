@@ -49,7 +49,7 @@ function Leaderboard() {
     return (
       <div className="leaderboard-container">
         <Header title="Leaderboard" />
-        <div style={{ textAlign: 'center' }}>Loading...</div>
+        <div className="loading-container">Loading...</div>
       </div>
     );
   }
@@ -57,25 +57,26 @@ function Leaderboard() {
   return (
     <div className="leaderboard-container">
       <Header title="Leaderboard" />
-      <div className="leaderboard-table-container">
-        <table className="leaderboard-table">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Monsters</th>
-            </tr>
-          </thead>
-          <tbody>
-            {leaderboard.map((user, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.count}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="leaderboard-content">
+        {leaderboard.map((user, index) => {
+          const rank = index + 1;
+          const rankClass = rank <= 3 ? `rank-${rank}` : '';
+          
+          return (
+            <div key={index} className={`leaderboard-item ${rankClass}`}>
+              <div className="leaderboard-rank">
+                {rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank}
+              </div>
+              <div className="leaderboard-info">
+                <span className="leaderboard-name">{user.name}</span>
+                <span>
+                  <span className="leaderboard-count">{user.count}</span>
+                  <span className="leaderboard-count-label">monsters</span>
+                </span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
