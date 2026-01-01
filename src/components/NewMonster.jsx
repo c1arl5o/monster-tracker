@@ -146,9 +146,10 @@ function NewMonster() {
 
   return (
     <div className="new-monster-container">
-      <BurgerMenu />
-
-      <h1 className="new-monster-title">NEW MONSTER</h1>
+      <div className="home-header">
+        <BurgerMenu />
+        <h1 className="home-title">Add Monster</h1>
+      </div>
 
       <div className="form-section" onClick={() => toggleSection('which')}>
         <h2 className="section-header">

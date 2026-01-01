@@ -53,7 +53,7 @@ function Home() {
     <div className="home-container">
       <div className="home-header">
         <BurgerMenu />
-        <h1 className="home-title">FEED</h1>
+        <h1 className="home-title">Feed</h1>
       </div>
       
       {/* This is the new feed */}

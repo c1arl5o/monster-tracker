@@ -3,11 +3,14 @@
   width: 100%;
   background-color: #1a1a1a;
   color: white;
-  padding: 2rem;
+  padding-top: 80px; /* Make room for fixed header */
+  padding-left: 2rem;
+  padding-right: 2rem;
   padding-bottom: 120px;
   box-sizing: border-box;
 }
 
+/* Remove this old style */
 .new-monster-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -25,6 +28,11 @@
   padding: 1.5rem;
   cursor: pointer;
   transition: background-color 0.2s;
+  margin-top: 2rem;
+}
+
+.form-section:first-of-type {
+  margin-top: 2rem; /* Add gap between header and first section */
 }
 
 .form-section:hover {
@@ -33,7 +41,7 @@
 
 .back-btn {
   position: fixed;
-  bottom: 20px;
+  bottom: 20px; /* Changed from 20px to match Home */
   left: 50%;
   transform: translateX(-50%);
   background-color: #6c757d;
@@ -250,7 +258,7 @@
 
 .upload-btn-main {
   position: fixed;
-  bottom: 90px;
+  bottom: 100px; /* Increased gap between buttons */
   left: 50%;
   transform: translateX(-50%);
   background-color: #646cff;
@@ -309,7 +317,9 @@
 
 @media (max-width: 768px) {
   .new-monster-container {
-    padding: 1rem;
+    padding-top: 70px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-bottom: 100px;
   }
 
@@ -325,7 +335,7 @@
   .upload-btn-main {
     font-size: 1.1rem;
     padding: 1rem 2rem;
-    bottom: 75px;
+    bottom: 85px; /* Adjusted for mobile */
   }
 
   .back-btn {
@@ -337,7 +347,9 @@
 
 @media (max-width: 480px) {
   .new-monster-container {
-    padding: 0.75rem;
+    padding-top: 60px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
     padding-bottom: 90px;
   }
 
@@ -348,14 +360,14 @@
   .upload-btn-main {
     font-size: 1rem;
     padding: 0.875rem 1.5rem;
-    bottom: 65px;
+    bottom: 120px; /* Increased gap on small screens */
     width: calc(100% - 20px);
   }
 
   .back-btn {
     font-size: 0.85rem;
     padding: 0.625rem 1rem;
-    bottom: 10px;
+    bottom: 50px;
     width: calc(100% - 20px);
   }
 
