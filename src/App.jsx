@@ -7,6 +7,7 @@ function App() {
   const [session, setSession] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showConfirmationMessage, setShowConfirmationMessage] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -28,6 +29,10 @@ function App() {
       const { error } = await supabase.auth.signUp({ email, password });
       if (error) {
         alert(error.message);
+      } else {
+        setShowConfirmationMessage(true);
+        setEmail('');
+        setPassword('');
       }
     } else {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -48,26 +53,34 @@ function App() {
     return (
       <div className="auth-container">
         <img src={monsterLogo} alt="Monster Tracker" className="auth-logo" />
-        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
-          <input
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="auth-input"
-          />
-          <input
-            type="password"
-            placeholder="Your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="auth-input"
-          />
-          <div className="auth-buttons">
-            <button onClick={(e) => handleSubmit(e, 'signup')}>Sign Up</button>
-            <button onClick={(e) => handleSubmit(e, 'signin')}>Sign In</button>
+        {showConfirmationMessage ? (
+          <div className="confirmation-message">
+            <h2>Check your email!</h2>
+            <p>We've sent you a confirmation link. Please check your inbox and click the link to verify your account.</p>
+            <button onClick={() => setShowConfirmationMessage(false)}>Back to Login</button>
           </div>
-        </form>
+        ) : (
+          <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="auth-input"
+            />
+            <input
+              type="password"
+              placeholder="Your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="auth-input"
+            />
+            <div className="auth-buttons">
+              <button onClick={(e) => handleSubmit(e, 'signup')}>Sign Up</button>
+              <button onClick={(e) => handleSubmit(e, 'signin')}>Sign In</button>
+            </div>
+          </form>
+        )}
       </div>
     );
   }
