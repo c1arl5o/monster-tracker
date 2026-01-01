@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
+import BurgerMenu from './BurgerMenu';
 import './Home.css';
 
 function Home() {
@@ -44,22 +45,13 @@ function Home() {
     }
   };
 
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      alert(error.message);
-    }
-  };
-
   if (loading) {
     return <div className="home-container"><div style={{ textAlign: 'center' }}>Loading...</div></div>;
   }
 
   return (
     <div className="home-container">
-      <button className="sign-out-button" onClick={handleSignOut}>
-        Sign Out
-      </button>
+      <BurgerMenu />
 
       <h1 className="home-title">Monster Tracker</h1>
       <p className="user-info">Current User ID: {userId || 'Not logged in'}</p>

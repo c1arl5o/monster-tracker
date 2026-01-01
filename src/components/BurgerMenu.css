@@ -1,0 +1,147 @@
+.burger-button {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.burger-icon {
+  width: 26px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.burger-icon span {
+  display: block;
+  position: absolute;
+  height: 2.5px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.burger-icon span:nth-child(1) {
+  top: 0px;
+}
+
+.burger-icon span:nth-child(2) {
+  top: 8.5px;
+}
+
+.burger-icon span:nth-child(3) {
+  top: 17px;
+}
+
+.burger-icon.open span:nth-child(1) {
+  top: 8.5px;
+  transform: rotate(135deg);
+}
+
+.burger-icon.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.burger-icon.open span:nth-child(3) {
+  top: 8.5px;
+  transform: rotate(-135deg);
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.burger-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100vh;
+  background-color: #2a2a2a;
+  border-left: 1px solid #444;
+  z-index: 999;
+  transition: right 0.3s ease-in-out;
+  padding-top: 5rem;
+}
+
+.burger-menu.open {
+  right: 0;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.menu-item {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 1.25rem 2rem;
+  text-align: left;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.menu-item:hover {
+  background-color: rgba(100, 108, 255, 0.1);
+}
+
+.menu-divider {
+  height: 1px;
+  background-color: #444;
+  margin: 1.5rem 1rem;
+}
+
+.menu-item.sign-out {
+  color: #ff4d4d;
+  margin-top: 0.5rem;
+}
+
+.menu-item.sign-out:hover {
+  background-color: rgba(255, 77, 77, 0.1);
+}
+
+@media (max-width: 768px) {
+  .burger-button {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .burger-menu {
+    width: 250px;
+    right: -250px;
+  }
+
+  .menu-item {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .burger-menu {
+    width: 220px;
+    right: -220px;
+  }
+}
