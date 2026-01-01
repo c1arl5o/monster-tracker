@@ -135,3 +135,34 @@
     width: calc(100% - 20px);
   }
 }
+
+.feed-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.feed-post {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.feed-post p {
+  margin: 0 0 0.5rem 0;
+  line-height: 1.6;
+}
+
+.feed-post .post-timestamp {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.feed-post .post-notes {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+  white-space: pre-wrap; /* to respect newlines in notes */
+}
