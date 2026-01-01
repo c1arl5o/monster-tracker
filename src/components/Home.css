@@ -3,16 +3,32 @@
   width: 100%;
   background-color: #1a1a1a;
   color: white;
-  padding: 2rem;
+  padding-top: 80px; /* Make room for fixed header */
+  padding-left: 2rem;
+  padding-right: 2rem;
   padding-bottom: 120px;
   box-sizing: border-box;
   position: relative;
 }
 
+.home-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  z-index: 1000;
+}
+
 .home-title {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin: 0;
   color: #646cff;
   text-align: center;
 }
@@ -80,13 +96,19 @@
 
 @media (max-width: 768px) {
   .home-container {
-    padding: 1rem;
+    padding-top: 70px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-bottom: 100px;
+  }
+
+  .home-header {
+    height: 70px;
+    padding: 0 1rem;
   }
 
   .home-title {
     font-size: 2rem;
-    margin-top: 1rem;
   }
 
   .data-section {
@@ -111,8 +133,15 @@
 
 @media (max-width: 480px) {
   .home-container {
-    padding: 0.75rem;
+    padding-top: 60px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
     padding-bottom: 90px;
+  }
+
+  .home-header {
+    height: 60px;
+    padding: 0 0.75rem;
   }
 
   .home-title {
@@ -140,6 +169,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 .feed-post {

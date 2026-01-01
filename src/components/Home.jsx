@@ -51,9 +51,10 @@ function Home() {
 
   return (
     <div className="home-container">
-      <BurgerMenu />
-
-      <h1 className="home-title">FEED</h1>
+      <div className="home-header">
+        <BurgerMenu />
+        <h1 className="home-title">FEED</h1>
+      </div>
       
       {/* This is the new feed */}
       <div className="feed-container">
