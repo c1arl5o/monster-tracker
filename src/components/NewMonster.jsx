@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BurgerMenu from './BurgerMenu';
+import { monsters } from '../data/monsters';
 import './NewMonster.css';
 
 function NewMonster() {
@@ -8,11 +9,6 @@ function NewMonster() {
   const [expandedSection, setExpandedSection] = useState(null);
   const [selectedMonster, setSelectedMonster] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-
-  const monsters = [
-    'Monster 1', 'Monster 2', 'Monster 3', 'Monster 4', 'Monster 5',
-    'Monster 6', 'Monster 7', 'Monster 8', 'Monster 9', 'Monster 10'
-  ];
 
   const filteredMonsters = monsters.filter(monster =>
     monster.toLowerCase().includes(searchQuery.toLowerCase())
