@@ -38,7 +38,7 @@ function BurgerMenu() {
       <nav className={`burger-menu ${isOpen ? 'open' : ''}`}>
         <div className="menu-items">
           <button className="menu-item" onClick={() => handleNavigation('home')}>
-            Home
+            Feed
           </button>
           <button className="menu-item" onClick={() => handleNavigation('leaderboard')}>
             Leaderboard
