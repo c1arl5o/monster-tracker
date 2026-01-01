@@ -9,6 +9,9 @@ function NewMonster() {
   const [expandedSection, setExpandedSection] = useState(null);
   const [selectedMonster, setSelectedMonster] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDateTime, setSelectedDateTime] = useState(null);
+  const [customDate, setCustomDate] = useState('');
+  const [customTime, setCustomTime] = useState('');
 
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? null : section);
@@ -22,6 +25,33 @@ function NewMonster() {
     setSelectedMonster(monster.name);
     setExpandedSection(null);
     setSearchQuery('');
+  };
+
+  const handleUseCurrentDateTime = () => {
+    const now = new Date();
+    setSelectedDateTime(now);
+    setCustomDate('');
+    setCustomTime('');
+    setExpandedSection(null);
+  };
+
+  const handleCustomDateTime = () => {
+    if (customDate && customTime) {
+      const dateTime = new Date(`${customDate}T${customTime}`);
+      setSelectedDateTime(dateTime);
+      setExpandedSection(null);
+    }
+  };
+
+  const formatDateTime = (date) => {
+    if (!date) return '';
+    return date.toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
   };
 
   return (
@@ -68,12 +98,44 @@ function NewMonster() {
 
       <div className="form-section" onClick={() => toggleSection('when')}>
         <h2 className="section-header">
-          2. When
+          2. When {selectedDateTime && <span className="selected-value">({formatDateTime(selectedDateTime)})</span>}
           <span className="expand-icon">{expandedSection === 'when' ? '−' : '+'}</span>
         </h2>
         {expandedSection === 'when' && (
-          <div className="section-content">
-            {/* Content coming up */}
+          <div className="section-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="current-datetime-btn"
+              onClick={handleUseCurrentDateTime}
+            >
+              Use Current Date & Time
+            </button>
+            
+            <div className="custom-datetime-divider">OR</div>
+            
+            <div className="custom-datetime">
+              <label className="datetime-label">Custom Date & Time:</label>
+              <div className="datetime-inputs">
+                <input
+                  type="date"
+                  value={customDate}
+                  onChange={(e) => setCustomDate(e.target.value)}
+                  className="datetime-input"
+                />
+                <input
+                  type="time"
+                  value={customTime}
+                  onChange={(e) => setCustomTime(e.target.value)}
+                  className="datetime-input"
+                />
+              </div>
+              <button 
+                className="set-datetime-btn"
+                onClick={handleCustomDateTime}
+                disabled={!customDate || !customTime}
+              >
+                Set Custom Date & Time
+              </button>
+            </div>
           </div>
         )}
       </div>
