@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 import './App.css';
-import monsterLogo from './assets/monster-white.png';
+import Auth from './components/Auth';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import Home from './components/Home';
+import AuthCallback from './AuthCallback';
+import NewMonster from './components/NewMonster';
+import Leaderboard from './components/Leaderboard';
 
 function App() {
   const [session, setSession] = useState(null);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showConfirmationMessage, setShowConfirmationMessage] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -23,73 +27,20 @@ function App() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const handleSubmit = async (e, action) => {
-    e.preventDefault();
-    if (action === 'signup') {
-      const { error } = await supabase.auth.signUp({ email, password });
-      if (error) {
-        alert(error.message);
-      } else {
-        setShowConfirmationMessage(true);
-        setEmail('');
-        setPassword('');
-      }
-    } else {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) {
-        alert(error.message);
-      }
-    }
-  };
-
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      alert(error.message);
-    }
-  };
-
-  if (!session) {
-    return (
-      <div className="auth-container">
-        <img src={monsterLogo} alt="Monster Tracker" className="auth-logo" />
-        {showConfirmationMessage ? (
-          <div className="confirmation-message">
-            <h2>Check your email!</h2>
-            <p>We've sent you a confirmation link. Please check your inbox and click the link to verify your account.</p>
-            <button onClick={() => setShowConfirmationMessage(false)}>Back to Login</button>
-          </div>
-        ) : (
-          <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="Your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="auth-input"
-            />
-            <input
-              type="password"
-              placeholder="Your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="auth-input"
-            />
-            <div className="auth-buttons">
-              <button onClick={(e) => handleSubmit(e, 'signup')}>Sign Up</button>
-              <button onClick={(e) => handleSubmit(e, 'signin')}>Sign In</button>
-            </div>
-          </form>
-        )}
-      </div>
-    );
-  }
-
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-      <button onClick={handleSignOut}>Sign Out</button>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={!session ? <Auth /> : <Navigate to="/home" />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={session ? <Home /> : <Navigate to="/" />} />
+          <Route path="/auth/callback" element={<AuthCallback />} />
+          <Route path="/new-monster" element={session ? <NewMonster /> : <Navigate to="/" />} />
+          <Route path="/leaderboard" element={session ? <Leaderboard /> : <Navigate to="/" />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
