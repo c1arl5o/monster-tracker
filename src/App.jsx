@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from './supabaseClient';
 import './App.css';
+import monsterLogo from './assets/monster-white.png';
 
 function App() {
   const [session, setSession] = useState(null);
@@ -21,19 +22,18 @@ function App() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const handleSignUp = async (e) => {
+  const handleSubmit = async (e, action) => {
     e.preventDefault();
-    const { error } = await supabase.auth.signUp({ email, password });
-    if (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      alert(error.message);
+    if (action === 'signup') {
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        alert(error.message);
+      }
+    } else {
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        alert(error.message);
+      }
     }
   };
 
@@ -46,23 +46,27 @@ function App() {
 
   if (!session) {
     return (
-      <div className="App">
-        <h1>Sign Up / Sign In</h1>
-        <form>
+      <div className="auth-container">
+        <img src={monsterLogo} alt="Monster Tracker" className="auth-logo" />
+        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
           <input
             type="email"
             placeholder="Your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="auth-input"
           />
           <input
             type="password"
             placeholder="Your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="auth-input"
           />
-          <button onClick={handleSignUp}>Sign Up</button>
-          <button onClick={handleSignIn}>Sign In</button>
+          <div className="auth-buttons">
+            <button onClick={(e) => handleSubmit(e, 'signup')}>Sign Up</button>
+            <button onClick={(e) => handleSubmit(e, 'signin')}>Sign In</button>
+          </div>
         </form>
       </div>
     );
