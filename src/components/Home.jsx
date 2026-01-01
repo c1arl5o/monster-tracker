@@ -52,28 +52,28 @@ function Home() {
   };
 
   if (loading) {
-    return <div className="home-container">Loading...</div>;
+    return <div className="home-container"><div style={{ textAlign: 'center' }}>Loading...</div></div>;
   }
 
   return (
     <div className="home-container">
-      <h1 className="home-title">Monster Tracker</h1>
-      <p>Current User ID: {userId}</p>
-      
       <button className="sign-out-button" onClick={handleSignOut}>
         Sign Out
       </button>
 
-      <div style={{ marginTop: '2rem' }}>
+      <h1 className="home-title">Monster Tracker</h1>
+      <p className="user-info">Current User ID: {userId || 'Not logged in'}</p>
+
+      <div className="data-section">
         <h2>All Rows from 'main' table ({allRows.length})</h2>
-        <pre style={{ background: '#f4f4f4', padding: '1rem', overflow: 'auto' }}>
+        <pre>
           {JSON.stringify(allRows, null, 2)}
         </pre>
       </div>
 
-      <div style={{ marginTop: '2rem' }}>
+      <div className="data-section">
         <h2>Rows where id matches user ID ({userRows.length})</h2>
-        <pre style={{ background: '#f4f4f4', padding: '1rem', overflow: 'auto' }}>
+        <pre>
           {JSON.stringify(userRows, null, 2)}
         </pre>
       </div>
