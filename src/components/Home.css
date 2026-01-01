@@ -190,6 +190,12 @@
   font-size: 0.9rem;
 }
 
+.post-image {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
 .feed-post .post-notes {
   margin-top: 1rem;
   padding-top: 1rem;

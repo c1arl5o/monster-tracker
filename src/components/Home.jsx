@@ -27,6 +27,7 @@ function Home() {
           which,
           date,
           notes,
+          photo_url,
           profiles (
             name
           )
@@ -66,6 +67,7 @@ function Home() {
             <p className="post-timestamp">
               {new Date(post.date).toLocaleString()}
             </p>
+            {post.photo_url && <img src={post.photo_url} alt={post.which} className="post-image" />}
             {post.notes && <p className="post-notes">{post.notes}</p>}
           </div>
         ))}
