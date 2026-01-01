@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BurgerMenu from './BurgerMenu';
 import { monsters } from '../data/monsters';
@@ -10,16 +10,16 @@ function NewMonster() {
   const [selectedMonster, setSelectedMonster] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredMonsters = monsters.filter(monster =>
-    monster.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? null : section);
   };
 
+  const filteredMonsters = monsters.filter(monster =>
+    monster.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const handleMonsterSelect = (monster) => {
-    setSelectedMonster(monster);
+    setSelectedMonster(monster.name);
     setExpandedSection(null);
     setSearchQuery('');
   };
@@ -51,7 +51,14 @@ function NewMonster() {
                   className="monster-item"
                   onClick={() => handleMonsterSelect(monster)}
                 >
-                  {monster}
+                  {monster.image && (
+                    <img 
+                      src={monster.image} 
+                      alt={monster.name}
+                      className="monster-image"
+                    />
+                  )}
+                  <span className="monster-name">{monster.name}</span>
                 </div>
               ))}
             </div>

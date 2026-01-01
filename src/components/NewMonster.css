@@ -119,6 +119,9 @@
   border-bottom: 1px solid #444;
   cursor: pointer;
   transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .monster-item:last-child {
@@ -131,6 +134,19 @@
 
 .monster-item:active {
   background-color: #333;
+}
+
+.monster-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+.monster-name {
+  flex: 1;
+  font-size: 1rem;
 }
 
 @media (max-width: 768px) {

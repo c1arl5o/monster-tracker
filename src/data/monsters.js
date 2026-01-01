@@ -1,12 +1,9 @@
+import ultraWhiteImg from '../assets/product-images/ULTRAWHITE.png';
+
 export const monsters = [
-  'Ultra White',
-  'Rehab',
-  'Ultra Watermelon',
-  'Normal Black',
-  'Monster 5',
-  'Monster 6',
-  'Monster 7',
-  'Monster 8',
-  'Monster 9',
-  'Monster 10'
+  { name: 'Ultra White', image: ultraWhiteImg },
+  { name: 'Rehab', image: '' },
+  { name: 'Normal Black', image: '' },
+  { name: 'Test 1', image: '' },
+  { name: 'Test 2', image: '' },
 ];
