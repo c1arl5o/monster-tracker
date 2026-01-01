@@ -40,11 +40,11 @@ function BurgerMenu() {
           <button className="menu-item" onClick={() => handleNavigation('home')}>
             Home
           </button>
-          <button className="menu-item" onClick={() => handleNavigation('new-monster')}>
-            New Monster
-          </button>
           <button className="menu-item" onClick={() => handleNavigation('leaderboard')}>
             Leaderboard
+          </button>
+          <button className="menu-item" onClick={() => handleNavigation('stats')} disabled>
+            Stats (Coming Soon)
           </button>
           
           <div className="menu-divider"></div>
