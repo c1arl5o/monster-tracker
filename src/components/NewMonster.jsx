@@ -17,6 +17,7 @@ function NewMonster() {
   const [customTime, setCustomTime] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
   const [uploading, setUploading] = useState(false);
+  const [notes, setNotes] = useState('');
 
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? null : section);
@@ -215,12 +216,18 @@ function NewMonster() {
 
       <div className="form-section" onClick={() => toggleSection('notes')}>
         <h2 className="section-header">
-          4. Additional Notes
+          4. Additional Notes {notes && <span className="selected-value">(✓)</span>}
           <span className="expand-icon">{expandedSection === 'notes' ? '−' : '+'}</span>
         </h2>
         {expandedSection === 'notes' && (
-          <div className="section-content">
-            {/* Content coming up */}
+          <div className="section-content" onClick={(e) => e.stopPropagation()}>
+            <textarea
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="Add any additional notes about this monster sighting..."
+              className="notes-textarea"
+              rows="6"
+            />
           </div>
         )}
       </div>
