@@ -8,7 +8,6 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [sec_name, setSecName] = useState('');
   const [fav_monster, setFavMonster] = useState('');
   const [avatar_url, setAvatarUrl] = useState('');
   const [showConfirmationMessage, setShowConfirmationMessage] = useState(false);
@@ -21,7 +20,6 @@ function SignUp() {
       options: {
         data: {
           name,
-          sec_name,
           fav_monster,
           avatar_url,
         },
@@ -34,7 +32,6 @@ function SignUp() {
       setEmail('');
       setPassword('');
       setName('');
-      setSecName('');
       setFavMonster('');
       setAvatarUrl('');
     }
@@ -59,13 +56,6 @@ function SignUp() {
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="auth-input"
-          />
-          <input
-            type="text"
-            placeholder="Second Name"
-            value={sec_name}
-            onChange={(e) => setSecName(e.target.value)}
             className="auth-input"
           />
           <input
