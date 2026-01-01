@@ -122,7 +122,7 @@ function NewMonster() {
         .from('main')
         .insert([
           {
-            id: user.id,
+            user_id: user.id,
             which: selectedMonster,
             date: selectedDateTime || new Date(),
             photo_url: photoUrl,
