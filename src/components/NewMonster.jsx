@@ -1,3 +1,4 @@
+import Header from './Header';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BurgerMenu from './BurgerMenu';
@@ -146,10 +147,7 @@ function NewMonster() {
 
   return (
     <div className="new-monster-container">
-      <div className="home-header">
-        <BurgerMenu />
-        <h1 className="home-title">Add Monster</h1>
-      </div>
+      <Header title="Add Monster" />
 
       <div className="form-section" onClick={() => toggleSection('which')}>
         <h2 className="section-header">

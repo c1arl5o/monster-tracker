@@ -10,14 +10,7 @@
   box-sizing: border-box;
 }
 
-/* Remove this old style */
-.new-monster-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  color: #646cff;
-  text-align: center;
-}
+
 
 .form-section {
   max-width: 1200px;

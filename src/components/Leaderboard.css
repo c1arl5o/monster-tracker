@@ -3,51 +3,9 @@
   width: 100%;
   background-color: #1a1a1a;
   color: white;
-  padding-top: 80px; /* Make room for fixed header, consistent with other pages */
+  padding-top: 80px; /* Make room for fixed header */
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 4rem; /* Some bottom padding */
+  padding-bottom: 120px;
   box-sizing: border-box;
-}
-
-.leaderboard-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #646cff; /* Consistent accent color */
-  text-align: center;
-}
-
-.leaderboard-container p {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #ccc;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .leaderboard-container {
-    padding-top: 70px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .leaderboard-container h1 {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .leaderboard-container {
-    padding-top: 60px;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-
-  .leaderboard-container h1 {
-    font-size: 1.75rem;
-  }
-
-  .leaderboard-container p {
-    font-size: 1rem;
-  }
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import BurgerMenu from './BurgerMenu';
+import Header from './Header';
 import './Home.css';
 
 function Home() {
@@ -23,7 +24,8 @@ function Home() {
       // Fetch posts for the feed
       const { data: feedData, error: feedError } = await supabase
         .from('main')
-        .select(`
+        .select(
+          `
           which,
           date,
           notes,
@@ -31,13 +33,13 @@ function Home() {
           profiles (
             name
           )
-        `)
+        `
+        )
         .order('date', { ascending: false });
 
       if (feedError) throw feedError;
-      
-      setFeed(feedData || []);
 
+      setFeed(feedData || []);
     } catch (error) {
       console.error('Error fetching data:', error);
       alert(error.message);
@@ -47,35 +49,42 @@ function Home() {
   };
 
   if (loading) {
-    return <div className="home-container"><div style={{ textAlign: 'center' }}>Loading...</div></div>;
+    return (
+      <div className="home-container">
+        <div style={{ textAlign: 'center' }}>Loading...</div>
+      </div>
+    );
   }
 
   return (
     <div className="home-container">
-      <div className="home-header">
-        <BurgerMenu />
-        <h1 className="home-title">Feed</h1>
-      </div>
-      
+      <Header title="Feed" />
+
       {/* This is the new feed */}
       <div className="feed-container">
         {feed.map((post, index) => (
           <div key={index} className="feed-post">
             <p>
-              <strong>{post.profiles?.name || 'Someone'}</strong> just encountered <strong>{post.which}</strong>.
+              <strong>{post.profiles?.name || 'Someone'}</strong> just
+              encountered <strong>{post.which}</strong>.
             </p>
-            <p className="post-timestamp">
-              {new Date(post.date).toLocaleString()}
-            </p>
-            {post.photo_url && <img src={post.photo_url} alt={post.which} className="post-image" />}
+            <p className="post-timestamp">{new Date(post.date).toLocaleString()}</p>
+            {post.photo_url && (
+              <img src={post.photo_url} alt={post.which} className="post-image" />
+            )}
             {post.notes && <p className="post-notes">{post.notes}</p>}
           </div>
         ))}
       </div>
 
-      <p className="user-info">Current User ID: {userId || 'Not logged in'}</p>
+      <p className="user-info">
+        Current User ID: {userId || 'Not logged in'}
+      </p>
 
-      <button className="new-monster-btn" onClick={() => navigate('/new-monster')}>
+      <button
+        className="new-monster-btn"
+        onClick={() => navigate('/new-monster')}
+      >
         + New Monster
       </button>
     </div>
