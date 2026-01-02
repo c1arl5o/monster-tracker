@@ -149,6 +149,8 @@ function NewMonster() {
     <div className="new-monster-container">
       <Header title="Add Monster" />
 
+      <p className="mandatory-disclaimer">Achtung!<br />1. (Welchen) und 2. (Wann) sind PFLICHT.<br />3. (Foto) und 4. (Notizen) sind OPTIONAL!</p>
+
       <div className="form-section" onClick={() => toggleSection('which')}>
         <h2 className="section-header">
           1. Welchen {selectedMonster && <span className="selected-value">({selectedMonster})</span>}
