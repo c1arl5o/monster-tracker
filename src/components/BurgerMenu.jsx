@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './BurgerMenu.css';
+import { FaGithub } from 'react-icons/fa';
 
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,6 +53,8 @@ function BurgerMenu() {
           <button className="menu-item sign-out" onClick={handleSignOut}>
             Sign Out
           </button>
+          <div className="menu-divider"></div>
+          <div className="menu-item" disabled>Made with 💟 by Carlo</div>
         </div>
       </nav>
     </>
