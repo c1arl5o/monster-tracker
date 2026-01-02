@@ -48,8 +48,8 @@ function Leaderboard() {
   if (loading) {
     return (
       <div className="leaderboard-container">
-        <Header title="Leaderboard" />
-        <div className="loading-container">Loading...</div>
+        <Header title="Rangliste" />
+        <div className="loading-container">Lädt...</div>
       </div>
     );
   }

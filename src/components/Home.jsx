@@ -51,7 +51,7 @@ function Home() {
   if (loading) {
     return (
       <div className="home-container">
-        <div style={{ textAlign: 'center' }}>Loading...</div>
+        <div style={{ textAlign: 'center' }}>Laden...</div>
       </div>
     );
   }
@@ -65,8 +65,7 @@ function Home() {
         {feed.map((post, index) => (
           <div key={index} className="feed-post">
             <p>
-              <strong>{post.profiles?.name || 'Someone'}</strong> just
-              encountered <strong>{post.which}</strong>.
+              <strong>{post.profiles?.name || 'Someone'}</strong> hat sich gerade einen <strong>{post.which}</strong> genehmigt.
             </p>
             <p className="post-timestamp">{new Date(post.date).toLocaleString()}</p>
             {post.photo_url && (
@@ -85,7 +84,7 @@ function Home() {
         className="new-monster-btn"
         onClick={() => navigate('/new-monster')}
       >
-        + New Monster
+        + Monster eintragen
       </button>
     </div>
   );

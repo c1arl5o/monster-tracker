@@ -42,16 +42,16 @@ function BurgerMenu() {
             Feed
           </button>
           <button className="menu-item" onClick={() => handleNavigation('leaderboard')}>
-            Leaderboard
+            Rangliste
           </button>
           <button className="menu-item" onClick={() => handleNavigation('stats')} disabled>
-            My Profile / My Stats (Coming Soon)
+            Mein Profil / Meine Statistiken (Coming Soon)
           </button>
           
           <div className="menu-divider"></div>
           
           <button className="menu-item sign-out" onClick={handleSignOut}>
-            Sign Out
+            Abmelden
           </button>
           <div className="menu-divider"></div>
           <div className="menu-item" disabled>Made with 💟 by Carlo</div>

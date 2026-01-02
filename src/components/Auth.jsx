@@ -10,8 +10,8 @@ const Auth = () => {
       <div className="auth-box">
         <img src={monsterLogo} alt="Monster Tracker" className="auth-logo" />
         <div className="auth-buttons">
-          <Link to="/login" className="auth-button login">Login</Link>
-          <Link to="/signup" className="auth-button signup">Sign Up</Link>
+          <Link to="/login" className="auth-button login">Anmelden</Link>
+          <Link to="/signup" className="auth-button signup">Registrieren</Link>
         </div>
       </div>
       Made with 💟 by Carlo<br /><br />

@@ -151,7 +151,7 @@ function NewMonster() {
 
       <div className="form-section" onClick={() => toggleSection('which')}>
         <h2 className="section-header">
-          1. Which {selectedMonster && <span className="selected-value">({selectedMonster})</span>}
+          1. Welchen {selectedMonster && <span className="selected-value">({selectedMonster})</span>}
           <span className="expand-icon">{expandedSection === 'which' ? '−' : '+'}</span>
         </h2>
         {expandedSection === 'which' && (
@@ -187,7 +187,7 @@ function NewMonster() {
 
       <div className="form-section" onClick={() => toggleSection('when')}>
         <h2 className="section-header">
-          2. When {selectedDateTime && <span className="selected-value">({formatDateTime(selectedDateTime)})</span>}
+          2. Wann {selectedDateTime && <span className="selected-value">({formatDateTime(selectedDateTime)})</span>}
           <span className="expand-icon">{expandedSection === 'when' ? '−' : '+'}</span>
         </h2>
         {expandedSection === 'when' && (
@@ -196,13 +196,13 @@ function NewMonster() {
               className="current-datetime-btn"
               onClick={handleUseCurrentDateTime}
             >
-              Use Current Date & Time
+              Nutze aktuelles Datum & Uhrzeit
             </button>
             
-            <div className="custom-datetime-divider">OR</div>
+            <div className="custom-datetime-divider">ODER</div>
             
             <div className="custom-datetime">
-              <label className="datetime-label">Custom Date & Time:</label>
+              <label className="datetime-label">Benutzerdefiniertes Datum & Uhrzeit:</label>
               <div className="datetime-inputs">
                 <input
                   type="date"
@@ -222,7 +222,7 @@ function NewMonster() {
                 onClick={handleCustomDateTime}
                 disabled={!customDate || !customTime}
               >
-                Set Custom Date & Time
+                Benutzerdefiniertes Datum & Uhrzeit setzen
               </button>
             </div>
           </div>
@@ -231,7 +231,7 @@ function NewMonster() {
 
       <div className="form-section" onClick={() => toggleSection('photo')}>
         <h2 className="section-header">
-          3. Photo {photoUrl && <span className="selected-value">(✓)</span>}
+          3. Foto {photoUrl && <span className="selected-value">(✓)</span>}
           <span className="expand-icon">{expandedSection === 'photo' ? '−' : '+'}</span>
         </h2>
         {expandedSection === 'photo' && (
@@ -257,7 +257,7 @@ function NewMonster() {
 
       <div className="form-section" onClick={() => toggleSection('notes')}>
         <h2 className="section-header">
-          4. Additional Notes {notes && <span className="selected-value">(✓)</span>}
+          4. Zusätzliche Notizen {notes && <span className="selected-value">(✓)</span>}
           <span className="expand-icon">{expandedSection === 'notes' ? '−' : '+'}</span>
         </h2>
         {expandedSection === 'notes' && (
@@ -265,7 +265,7 @@ function NewMonster() {
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Enter any additional notes here..."
+              placeholder="Gib hier zusätzliche Notizen ein..."
               className="notes-textarea"
               rows="6"
             />
@@ -278,11 +278,11 @@ function NewMonster() {
         onClick={handleUpload}
         disabled={!selectedMonster || isUploading}
       >
-        {isUploading ? 'Uploading...' : 'Upload Monster'}
+        {isUploading ? 'Hochladen...' : 'Monster eintragen'}
       </button>
 
       <button className="back-btn" onClick={() => navigate('/')}>
-        Back to Feed
+        Zurück zum Feed
       </button>
     </div>
   );

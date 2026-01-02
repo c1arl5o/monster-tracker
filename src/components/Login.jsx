@@ -24,14 +24,14 @@ function Login() {
       <form className="auth-form" onSubmit={handleSubmit}>
         <input
           type="email"
-          placeholder="Your email"
+          placeholder="Deine E-Mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="auth-input"
         />
         <input
           type="password"
-          placeholder="Your password"
+          placeholder="Dein Passwort"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="auth-input"
@@ -41,7 +41,7 @@ function Login() {
         </div>
       </form>
       <button className="auth-buttons" onClick={() => navigate('/')}>
-        Back
+        Zurück
       </button>
     </div>
   );

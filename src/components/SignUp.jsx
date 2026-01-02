@@ -39,9 +39,9 @@ function SignUp() {
     <div className="auth-container">
       {showConfirmationMessage ? (
         <div className="confirmation-message">
-          <h2>Check your email!</h2>
-          <p>We've sent you a confirmation link. Please check your inbox and click the link to verify your account.</p>
-          <Link to="/login" className="auth-button">Go to Login</Link>
+          <h2>Check deine Mail</h2>
+          <p>Ich habe dir einen Bestätigungslink geschickt. Bitte überprüfe deine Mails und klicke auf den Link, um dein Konto zu verifizieren.</p>
+          <Link to="/login" className="auth-button">Zum Login</Link>
         </div>
       ) : (
         <>
@@ -74,11 +74,11 @@ function SignUp() {
             />
 
             <div className="auth-buttons">
-              <button type="submit">Sign Up</button>
+              <button type="submit">Registrieren</button>
             </div>
           </form>
           <button className="auth-buttons" onClick={() => navigate('/')}>
-            Back
+            Zurück
           </button>
         </>
       )}
