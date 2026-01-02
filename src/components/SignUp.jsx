@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import monsterLogo from '../assets/monster-white.png';
 import './SignUp.css';
@@ -8,9 +8,9 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [fav_monster, setFavMonster] = useState('');
   const [avatar_url, setAvatarUrl] = useState('');
   const [showConfirmationMessage, setShowConfirmationMessage] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +20,6 @@ function SignUp() {
       options: {
         data: {
           name,
-          fav_monster,
           avatar_url,
         },
       },
@@ -32,14 +31,12 @@ function SignUp() {
       setEmail('');
       setPassword('');
       setName('');
-      setFavMonster('');
       setAvatarUrl('');
     }
   };
 
   return (
     <div className="auth-container">
-      <img src={monsterLogo} alt="Monster Tracker" className="auth-logo" />
       {showConfirmationMessage ? (
         <div className="confirmation-message">
           <h2>Check your email!</h2>
@@ -47,45 +44,43 @@ function SignUp() {
           <Link to="/login" className="auth-button">Go to Login</Link>
         </div>
       ) : (
-        <form className="auth-form" onSubmit={handleSubmit}>
-          {/* Show these inputs only when signing up, strictly speaking,
+        <>
+          <form className="auth-form" onSubmit={handleSubmit}>
+            {/* Show these inputs only when signing up, strictly speaking,
               but for now let's just add them to the form */}
 
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="auth-input"
-          />
-          <input
-            type="text"
-            placeholder="Favorite Monster"
-            value={fav_monster}
-            onChange={(e) => setFavMonster(e.target.value)}
-            className="auth-input"
-          />
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="auth-input"
+            />
 
-          {/* Existing inputs */}
-          <input
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="auth-input"
-          />
-          <input
-            type="password"
-            placeholder="Your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="auth-input"
-          />
+            {/* Existing inputs */}
+            <input
+              type="email"
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="auth-input"
+            />
+            <input
+              type="password"
+              placeholder="Your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="auth-input"
+            />
 
-          <div className="auth-buttons">
-            <button type="submit">Sign Up</button>
-          </div>
-        </form>
+            <div className="auth-buttons">
+              <button type="submit">Sign Up</button>
+            </div>
+          </form>
+          <button className="auth-buttons" onClick={() => navigate('/')}>
+            Back
+          </button>
+        </>
       )}
     </div>
   );
