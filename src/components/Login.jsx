@@ -21,7 +21,6 @@ function Login() {
 
   return (
     <div className="auth-container">
-      <img src={monsterLogo} alt="Monster Tracker" className="auth-logo" />
       <form className="auth-form" onSubmit={handleSubmit}>
         <input
           type="email"
@@ -41,6 +40,9 @@ function Login() {
           <button type="submit" className="auth-button">Sign In</button>
         </div>
       </form>
+      <button className="auth-buttons" onClick={() => navigate('/')}>
+        Back
+      </button>
     </div>
   );
 }

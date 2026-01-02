@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './BurgerMenu.css';
+import { FaGithub } from 'react-icons/fa';
 
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,13 +39,13 @@ function BurgerMenu() {
       <nav className={`burger-menu ${isOpen ? 'open' : ''}`}>
         <div className="menu-items">
           <button className="menu-item" onClick={() => handleNavigation('home')}>
-            Home
-          </button>
-          <button className="menu-item" onClick={() => handleNavigation('new-monster')}>
-            New Monster
+            Feed
           </button>
           <button className="menu-item" onClick={() => handleNavigation('leaderboard')}>
             Leaderboard
+          </button>
+          <button className="menu-item" onClick={() => handleNavigation('stats')} disabled>
+            Stats (Coming Soon)
           </button>
           
           <div className="menu-divider"></div>
@@ -52,6 +53,8 @@ function BurgerMenu() {
           <button className="menu-item sign-out" onClick={handleSignOut}>
             Sign Out
           </button>
+          <div className="menu-divider"></div>
+          <div className="menu-item" disabled>Made with 💟 by Carlo</div>
         </div>
       </nav>
     </>
