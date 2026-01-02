@@ -56,7 +56,7 @@ function Leaderboard() {
 
   return (
     <div className="leaderboard-container">
-      <Header title="Leaderboard" />
+      <Header title="Rangliste" />
       <div className="leaderboard-content">
         {leaderboard.map((user, index) => {
           const rank = index + 1;
