@@ -18,8 +18,9 @@ import ULTRA_WATERMELON_IMG from '../assets/product-images/ULTRA_WATERMELON.jpg'
 import ULTRA_WHITE_IMG from '../assets/product-images/ULTRA_WHITE.png';
 
 export const monsters = [
+  { name: 'Ultra White', image: ULTRA_WHITE_IMG },
+  { name: 'Rehab Peach', image: REHAB_PEACH_IMG },
   { name: 'Bad Apple', image: BADAPPLE_IMG },
-  { name: 'Cosmic Peach', image: COSMICPEACH_IMG },
   { name: 'Doctor', image: DOCTOR_IMG },
   { name: 'Juiced Mango Loco', image: JUICED_MANGOLOCO_IMG },
   { name: 'Juiced Pipeline Punch', image: JUICED_PIPELINEPUNCH_IMG },
@@ -27,7 +28,6 @@ export const monsters = [
   { name: 'Lando Norris', image: LANDONORRIS_IMG },
   { name: 'Lewis Hamilton', image: LEWISHAMILTON_IMG },
   { name: 'Nitro Super Dry', image: NITRO_SUPERDRY_IMG },
-  { name: 'Rehab Peach', image: REHAB_PEACH_IMG },
   { name: 'Ultra Fiesta', image: ULTRA_FIESTA_IMG },
   { name: 'Ultra Gold', image: ULTRA_GOLD_IMG },
   { name: 'Ultra Lila', image: ULTRA_LILA_IMG },
@@ -35,5 +35,5 @@ export const monsters = [
   { name: 'Ultra Ruby Red', image: ULTRA_RUBYRED_IMG },
   { name: 'Ultra Strawberry', image: ULTRA_STRAWBERRY_IMG },
   { name: 'Ultra Watermelon', image: ULTRA_WATERMELON_IMG },
-  { name: 'Ultra White', image: ULTRA_WHITE_IMG },
+  { name: 'Nitro Cosmic Peach', image: COSMICPEACH_IMG },
 ];
