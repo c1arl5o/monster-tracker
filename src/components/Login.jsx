@@ -37,12 +37,12 @@ function Login() {
           className="auth-input"
         />
         <div className="auth-buttons">
-          <button type="submit" className="auth-button">Sign In</button>
-        </div>
-      </form>
-      <button className="auth-buttons" onClick={() => navigate('/')}>
+          <button type="submit" className="auth-button">Anmelden</button>
+          <button className="auth-button" onClick={() => navigate('/')}>
         Zurück
       </button>
+        </div>
+      </form>
     </div>
   );
 }

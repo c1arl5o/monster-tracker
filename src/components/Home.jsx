@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
-import BurgerMenu from './BurgerMenu';
 import Header from './Header';
+import Tutorial from './Tutorial';
 import './Home.css';
 
 function Home() {
   const navigate = useNavigate();
   const [feed, setFeed] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [userId, setUserId] = useState(null); // Keep this for debugging if needed
+  const [userId, setUserId] = useState(null);
+  const [showTutorial, setShowTutorial] = useState(!localStorage.getItem('tutorialSeen'));
 
   useEffect(() => {
     fetchData();
@@ -17,11 +18,9 @@ function Home() {
 
   const fetchData = async () => {
     try {
-      // Get current user to have the ID for debugging
       const { data: { user } } = await supabase.auth.getUser();
       setUserId(user?.id);
 
-      // Fetch posts for the feed
       const { data: feedData, error: feedError } = await supabase
         .from('main')
         .select(
@@ -48,6 +47,10 @@ function Home() {
     }
   };
 
+  const handleTutorialClose = () => {
+    setShowTutorial(false);
+  };
+
   if (loading) {
     return (
       <div className="home-container">
@@ -58,9 +61,9 @@ function Home() {
 
   return (
     <div className="home-container">
+      {showTutorial && <Tutorial onClose={handleTutorialClose} />}
       <Header title="Feed" />
 
-      {/* This is the new feed */}
       <div className="feed-container">
         {feed.map((post, index) => (
           <div key={index} className="feed-post">

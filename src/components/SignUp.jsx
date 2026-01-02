@@ -75,11 +75,11 @@ function SignUp() {
 
             <div className="auth-buttons">
               <button type="submit">Registrieren</button>
+              <button className="auth-button" onClick={() => navigate('/')}>
+        Zurück
+      </button>
             </div>
           </form>
-          <button className="auth-buttons" onClick={() => navigate('/')}>
-            Zurück
-          </button>
         </>
       )}
     </div>
