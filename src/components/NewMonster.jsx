@@ -275,17 +275,19 @@ function NewMonster() {
         )}
       </div>
 
-      <button 
-        className="upload-btn-main" 
-        onClick={handleUpload}
-        disabled={!selectedMonster || isUploading}
-      >
-        {isUploading ? 'Hochladen...' : 'Monster eintragen'}
-      </button>
+      <div className="button-container">
+        <button 
+          className="upload-btn-main" 
+          onClick={handleUpload}
+          disabled={!selectedMonster || isUploading}
+        >
+          {isUploading ? 'Hochladen...' : 'Monster eintragen'}
+        </button>
 
-      <button className="back-btn" onClick={() => navigate('/')}>
-        Zurück zum Feed
-      </button>
+        <button className="back-btn" onClick={() => navigate('/')}>
+          Zurück zum Feed
+        </button>
+      </div>
     </div>
   );
 }
