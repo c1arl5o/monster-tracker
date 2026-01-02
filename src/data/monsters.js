@@ -23,7 +23,7 @@ import ASSAULT_IMG from '../assets/product-images/ASSAULT.jpg';
 import JUICED_AUSSIELEMONADE_IMG from '../assets/product-images/JUICED_AUSSIELEMONADE.jpg';
 import JUICED_PACIFICPUNCH_IMG from '../assets/product-images/JUICED_PACIFICPUNCH.jpg';
 import JUICED_MONARCH_IMG from '../assets/product-images/JUICED_MONARCH.jpg';
-import JUICED_MIXXD_IMG from '../assets/product-images/JUICED_MIXXD.jpg';
+import JUICED_MIXXD_IMG from '../assets/product-images/JUICED_MIXXD.jpeg';
 import JUICED_KHAOTIC_IMG from '../assets/product-images/JUICED_KHAOTIC.jpg';
 
 export const monsters = [
