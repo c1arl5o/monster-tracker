@@ -1,4 +1,4 @@
-import BADAPPLE_IMG from '../assets/product-images/BADAPPLE.png';
+import JUICED_BADAPPLE_IMG from '../assets/product-images/JUICED_BADAPPLE.jpg';
 import COSMICPEACH_IMG from '../assets/product-images/COSMICPEACH.jpg';
 import DOCTOR_IMG from '../assets/product-images/DOCTOR.jpg';
 import JUICED_MANGOLOCO_IMG from '../assets/product-images/JUICED_MANGOLOCO.jpg';
@@ -25,6 +25,7 @@ import JUICED_PACIFICPUNCH_IMG from '../assets/product-images/JUICED_PACIFICPUNC
 import JUICED_MONARCH_IMG from '../assets/product-images/JUICED_MONARCH.jpg';
 import JUICED_MIXXD_IMG from '../assets/product-images/JUICED_MIXXD.jpeg';
 import JUICED_KHAOTIC_IMG from '../assets/product-images/JUICED_KHAOTIC.jpg';
+import ULTRA_ROSA_IMG from '../assets/product-images/ULTRA_ROSA.jpg';
 
 export const monsters = [
 
@@ -58,7 +59,7 @@ export const monsters = [
   { name: 'Juiced Rio Punch', image: JUICE_RIOPUNCH_IMG },
   { name: 'Juiced Aussie Lemonade', image: JUICED_AUSSIELEMONADE_IMG },
   { name: 'Juiced Pipeline Punch', image: JUICED_PIPELINEPUNCH_IMG },
-  { name: 'Juiced Bad Apple', image: BADAPPLE_IMG },
+  { name: 'Juiced Bad Apple', image: JUICED_BADAPPLE_IMG },
   { name: 'Juiced Pacific Punch', image: JUICED_PACIFICPUNCH_IMG },
   { name: 'Juiced Monarch', image: JUICED_MONARCH_IMG },
   { name: 'Juiced Mixxd Punch', image: JUICED_MIXXD_IMG },
