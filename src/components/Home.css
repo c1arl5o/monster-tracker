@@ -1,7 +1,6 @@
 .home-container {
   min-height: 100vh;
   width: 100%;
-  background-color: #1a1a1a;
   color: white;
   padding-top: 80px; /* Make room for fixed header */
   padding-left: 2rem;

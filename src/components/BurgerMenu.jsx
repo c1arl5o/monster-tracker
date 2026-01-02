@@ -45,7 +45,7 @@ function BurgerMenu() {
             Leaderboard
           </button>
           <button className="menu-item" onClick={() => handleNavigation('stats')} disabled>
-            Stats (Coming Soon)
+            My Profile / My Stats (Coming Soon)
           </button>
           
           <div className="menu-divider"></div>
