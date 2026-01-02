@@ -28,8 +28,8 @@
   color: white;
   border: none;
   border-radius: 12px;
-  padding: 1.25rem 2.5rem;
-  font-size: 1.3rem;
+  padding: 2.5rem 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
@@ -95,8 +95,8 @@
   }
 
   .new-monster-btn {
-    font-size: 1.1rem;
-    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    padding: 2rem 2rem;
     bottom: 15px;
   }
 }
@@ -119,8 +119,8 @@
   }
 
   .new-monster-btn {
-    font-size: 1rem;
-    padding: 0.875rem 1.5rem;
+    font-size: 1.4rem;
+    padding: 1.75rem 1.5rem;
     bottom: 50px;
     width: calc(100% - 20px);
   }
