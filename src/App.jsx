@@ -9,6 +9,7 @@ import Home from './components/Home';
 import AuthCallback from './AuthCallback';
 import NewMonster from './components/NewMonster';
 import Leaderboard from './components/Leaderboard';
+import Profile from './components/Profile';
 
 function App() {
   const [session, setSession] = useState(null);
@@ -38,6 +39,7 @@ function App() {
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/new-monster" element={session ? <NewMonster /> : <Navigate to="/" />} />
           <Route path="/leaderboard" element={session ? <Leaderboard /> : <Navigate to="/" />} />
+          <Route path="/profile" element={session ? <Profile /> : <Navigate to="/" />} />
         </Routes>
       </div>
     </Router>

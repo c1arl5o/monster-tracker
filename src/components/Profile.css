@@ -1,0 +1,39 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  color: white;
+}
+
+.profile-content {
+  margin-top: 80px; /* Adjust based on Header height */
+  text-align: center;
+}
+
+.profile-content h2 {
+  color: #61dafb; /* Example color, similar to React blue */
+  margin-bottom: 20px;
+}
+
+.profile-content p {
+  font-size: 1.1em;
+  margin-bottom: 30px;
+}
+
+.profile-content button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.profile-content button:hover {
+  background-color: #21a1f1;
+}
