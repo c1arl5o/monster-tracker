@@ -5,6 +5,7 @@ import './Profile.css';
 import { supabase } from '../supabaseClient';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import { monsters } from '../data/monsters';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -12,6 +13,7 @@ function Profile() {
   const navigate = useNavigate();
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [favoriteMonster, setFavoriteMonster] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +37,21 @@ function Profile() {
 
           const labels = Object.keys(flavorCounts);
           const chartValues = Object.values(flavorCounts);
+
+          // Find favorite monster
+          const maxCount = Math.max(...chartValues);
+          const favorites = labels.filter(label => flavorCounts[label] === maxCount);
+          
+          if (favorites.length === 1) {
+            const monsterData = monsters.find(m => m.name === favorites[0]);
+            setFavoriteMonster({
+              name: favorites[0],
+              count: maxCount,
+              image: monsterData?.image
+            });
+          } else {
+            setFavoriteMonster(null);
+          }
 
           setChartData({
             labels,
@@ -83,6 +100,27 @@ function Profile() {
           <>
             <div className="chart-container">
               <Pie data={chartData} />
+            </div>
+            <div className="favorite-container">
+              {favoriteMonster ? (
+                <>
+                  <div className="favorite-label">Mein Lieblingsmonster</div>
+                  {favoriteMonster.image && (
+                    <img 
+                      src={favoriteMonster.image} 
+                      alt={favoriteMonster.name}
+                      className="favorite-image"
+                    />
+                  )}
+                  <div className="favorite-name">{favoriteMonster.name}</div>
+                  <div className="favorite-count">{favoriteMonster.count}x getrunken</div>
+                </>
+              ) : (
+                <>
+                  <div className="favorite-label">Mein Lieblingsmonster</div>
+                  <div className="no-favorite">Du hast keinen eindeutigen Favoriten</div>
+                </>
+              )}
             </div>
             <div className="metrics-container">
               <div className="metric-item">
