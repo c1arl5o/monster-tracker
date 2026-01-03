@@ -75,19 +75,38 @@ function Profile() {
 
   return (
     <div className="profile-container">
-      <Header title="Profile / Statistics" />
+      <Header title="Profil / Statistik" />
       <div className="profile-content">
-        <h2>Your Profile and Statistics</h2>
         {loading ? (
-          <p>Loading chart...</p>
+          <p>Lade Diagramm...</p>
         ) : chartData && chartData.labels.length > 0 ? (
-          <div className="chart-container">
-            <Pie data={chartData} />
-          </div>
+          <>
+            <div className="chart-container">
+              <Pie data={chartData} />
+            </div>
+            <div className="metrics-container">
+              <div className="metric-item">
+                <div className="metric-label">Monster getrunken</div>
+                <div className="metric-value">
+                  {chartData.datasets[0].data.reduce((a, b) => a + b, 0) * 0.5}
+                  <span className="metric-unit"> Liter</span>
+                </div>
+                <div className="metric-subtitle">So viel Flüssigkeit habe ich konsumiert</div>
+              </div>
+              <div className="metric-item">
+                <div className="metric-label">Koffein konsumiert</div>
+                <div className="metric-value">
+                  {chartData.datasets[0].data.reduce((a, b) => a + b, 0) * 160}
+                  <span className="metric-unit"> mg</span>
+                </div>
+                <div className="metric-subtitle">Man lebt ja nur einmal</div>
+              </div>
+            </div>
+          </>
         ) : (
-          <p>No monster data found to display a chart.</p>
+          <p>Keine Monster-Daten gefunden, um ein Diagramm anzuzeigen.</p>
         )}
-        <button onClick={() => navigate('/')}>Go to Home</button>
+        <button onClick={() => navigate('/')}>Zur Startseite</button>
       </div>
     </div>
   );
