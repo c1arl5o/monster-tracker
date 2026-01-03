@@ -24,4 +24,9 @@ export const feedTexts = [
       <strong>{name}</strong> macht sich gerade einen eiskalten <strong>{monster}</strong> auf.
     </>
   ),
+  (name, monster) => (
+    <>
+      Ein <strong>{monster}</strong> macht <strong>{name}</strong> endlich wieder glücklich.
+    </>
+  ),
 ];
