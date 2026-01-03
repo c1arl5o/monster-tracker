@@ -102,9 +102,9 @@ function Profile() {
               <Pie data={chartData} />
             </div>
             <div className="favorite-container">
+              <div className="favorite-label">Mein Lieblingsmonster</div>
               {favoriteMonster ? (
-                <>
-                  <div className="favorite-label">Mein Lieblingsmonster</div>
+                <div className="favorite-content">
                   {favoriteMonster.image && (
                     <img 
                       src={favoriteMonster.image} 
@@ -112,14 +112,13 @@ function Profile() {
                       className="favorite-image"
                     />
                   )}
-                  <div className="favorite-name">{favoriteMonster.name}</div>
-                  <div className="favorite-count">{favoriteMonster.count}x getrunken</div>
-                </>
+                  <div className="favorite-text">
+                    <div className="favorite-name">{favoriteMonster.name}</div>
+                    <div className="favorite-count">{favoriteMonster.count}x getrunken</div>
+                  </div>
+                </div>
               ) : (
-                <>
-                  <div className="favorite-label">Mein Lieblingsmonster</div>
-                  <div className="no-favorite">Du hast keinen eindeutigen Favoriten</div>
-                </>
+                <div className="no-favorite">Du hast keinen eindeutigen Favoriten</div>
               )}
             </div>
             <div className="metrics-container">
