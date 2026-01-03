@@ -11,6 +11,12 @@
 .profile-content {
   margin-top: 80px; /* Adjust based on Header height */
   text-align: center;
+  width: 100%;
+}
+
+.chart-container {
+  max-width: 600px;
+  margin: 0 auto 30px;
 }
 
 .profile-content h2 {
