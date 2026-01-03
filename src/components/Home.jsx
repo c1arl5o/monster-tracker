@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import Header from './Header';
 import Tutorial from './Tutorial';
+import { feedTexts } from '../data/text';
 import './Home.css';
 
 function Home() {
@@ -65,18 +66,21 @@ function Home() {
       <Header title="Feed" />
 
       <div className="feed-container">
-        {feed.map((post, index) => (
-          <div key={index} className="feed-post">
-            <p>
-              <strong>{post.profiles?.name || 'Someone'}</strong> hat sich gerade einen <strong>{post.which}</strong> genehmigt.
-            </p>
-            <p className="post-timestamp">{new Date(post.date).toLocaleString()}</p>
-            {post.photo_url && (
-              <img src={post.photo_url} alt={post.which} className="post-image" />
-            )}
-            {post.notes && <p className="post-notes">{post.notes}</p>}
-          </div>
-        ))}
+        {feed.map((post, index) => {
+          const randomText = feedTexts[Math.floor(Math.random() * feedTexts.length)];
+          return (
+            <div key={index} className="feed-post">
+              <p>
+                {randomText(post.profiles?.name || 'Someone', post.which)}
+              </p>
+              <p className="post-timestamp">{new Date(post.date).toLocaleString()}</p>
+              {post.photo_url && (
+                <img src={post.photo_url} alt={post.which} className="post-image" />
+              )}
+              {post.notes && <p className="post-notes">{post.notes}</p>}
+            </div>
+          );
+        })}
       </div>
 
       <p className="user-info">
