@@ -45,7 +45,7 @@ function BurgerMenu() {
             Rangliste
           </button>
           <button className="menu-item" onClick={() => handleNavigation('profile')}>
-            Mein Profil / Statistiken
+            Meine Stats
           </button>
           
           <div className="menu-divider"></div>

@@ -92,13 +92,14 @@ function Profile() {
 
   return (
     <div className="profile-container">
-      <Header title="Profil / Statistik" />
+      <Header title="Meine Stats" />
       <div className="profile-content">
         {loading ? (
           <p>Lade Diagramm...</p>
         ) : chartData && chartData.labels.length > 0 ? (
           <>
             <div className="chart-container">
+              <div className="favorite-label">Flavor Aufteilung</div>
               <Pie data={chartData} />
             </div>
             <div className="favorite-container">
@@ -123,20 +124,20 @@ function Profile() {
             </div>
             <div className="metrics-container">
               <div className="metric-item">
-                <div className="metric-label">Monster getrunken</div>
-                <div className="metric-value">
-                  {chartData.datasets[0].data.reduce((a, b) => a + b, 0) * 0.5}
-                  <span className="metric-unit"> Liter</span>
-                </div>
-                <div className="metric-subtitle">So viel Flüssigkeit habe ich konsumiert</div>
-              </div>
-              <div className="metric-item">
                 <div className="metric-label">Koffein konsumiert</div>
                 <div className="metric-value">
                   {chartData.datasets[0].data.reduce((a, b) => a + b, 0) * 160}
                   <span className="metric-unit"> mg</span>
                 </div>
-                <div className="metric-subtitle">Man lebt ja nur einmal</div>
+                <div className="metric-subtitle">Irgendwie muss man ja das Leben aushalten</div>
+              </div>
+              <div className="metric-item">
+                <div className="metric-label">Getrunkene Menge</div>
+                <div className="metric-value">
+                  {chartData.datasets[0].data.reduce((a, b) => a + b, 0) * 0.5}
+                  <span className="metric-unit"> Liter</span>
+                </div>
+                <div className="metric-subtitle">So viel Liter habe ich getrunken</div>
               </div>
             </div>
           </>
