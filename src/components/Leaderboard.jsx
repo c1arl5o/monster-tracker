@@ -13,20 +13,18 @@ function Leaderboard() {
 
   const fetchLeaderboard = async () => {
     try {
-      const { data, error } = await supabase
-        .from('main')
-        .select('user_id, profiles(name)');
+      const { data, error } = await supabase.rpc('get_feed_posts');
 
       if (error) throw error;
 
-      const counts = data.reduce((acc, { user_id, profiles }) => {
-        if (!user_id) return acc; // Skip entries without a user_id
-        if (acc[user_id]) {
-          acc[user_id].count++;
+      const counts = data.reduce((acc, post) => {
+        if (!post.user_id) return acc; // Skip entries without a user_id
+        if (acc[post.user_id]) {
+          acc[post.user_id].count++;
         } else {
-          acc[user_id] = {
+          acc[post.user_id] = {
             count: 1,
-            name: profiles ? profiles.name : 'Anonymous',
+            name: post.user_name || 'Anonymous',
           };
         }
         return acc;
