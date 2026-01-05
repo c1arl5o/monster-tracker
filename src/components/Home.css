@@ -162,3 +162,14 @@
   border-top: 1px solid #444;
   white-space: pre-wrap; /* to respect newlines in notes */
 }
+
+.comments-toggle-btn {
+  background: none;
+  border: 1px solid #646cff;
+  color: #646cff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
