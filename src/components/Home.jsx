@@ -16,7 +16,6 @@ function Home() {
   const [showTutorial, setShowTutorial] = useState(!localStorage.getItem('tutorialSeen'));
   const [isAdmin, setIsAdmin] = useState(false);
   const [showAdminModal, setShowAdminModal] = useState(false);
-  const [visibleCommentsPostId, setVisibleCommentsPostId] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -76,14 +75,6 @@ function Home() {
     fetchData(); // Refresh feed after admin action
   }
 
-  const toggleComments = (postId) => {
-    if (visibleCommentsPostId === postId) {
-      setVisibleCommentsPostId(null);
-    } else {
-      setVisibleCommentsPostId(postId);
-    }
-  };
-
   if (loading) {
     return (
       <div className="home-container">
@@ -113,11 +104,7 @@ function Home() {
                 )}
                 {post.notes && <p className="post-notes">{post.notes}</p>}
 
-                <button onClick={() => toggleComments(post.id)} className="comments-toggle-btn">
-                  {visibleCommentsPostId === post.id ? 'Hide Comments' : 'Show Comments'}
-                </button>
-
-                {visibleCommentsPostId === post.id && <Comments postId={post.id} userId={userId} />}
+                <Comments postId={post.id} userId={userId} />
               </div>
             );
           } else if (post.post_type === 'custom_post') {

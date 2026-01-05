@@ -7,6 +7,7 @@ function Comments({ postId, userId }) {
   const [loading, setLoading] = useState(true);
   const [newComment, setNewComment] = useState('');
   const [error, setError] = useState(null);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
   useEffect(() => {
     fetchComments();
@@ -45,7 +46,6 @@ function Comments({ postId, userId }) {
 
   return (
     <div className="comments-section">
-      <h4>Comments</h4>
       {loading && <p>Loading comments...</p>}
       {error && <p className="error-message">Error: {error}</p>}
       
@@ -66,8 +66,10 @@ function Comments({ postId, userId }) {
             placeholder="Write a comment..."
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
+            onFocus={() => setIsInputFocused(true)}
+            onBlur={() => setIsInputFocused(false)}
           />
-          <button type="submit">Post</button>
+          {(isInputFocused || newComment) && <button type="submit">Send</button>}
         </form>
       )}
     </div>
