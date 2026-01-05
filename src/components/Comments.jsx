@@ -53,7 +53,7 @@ function Comments({ postId, userId }) {
         {comments.map((comment) => (
           <div key={comment.id} className="comment">
             <p><strong>{comment.user_name || 'Someone'}:</strong> {comment.content}</p>
-            <span className="comment-timestamp">{new Date(comment.created_at).toLocaleString()}</span>
+            <span className="comment-timestamp">{new Date(comment.created_at).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })}</span>
           </div>
         ))}
         {comments.length === 0 && !loading && <p>No comments yet.</p>}

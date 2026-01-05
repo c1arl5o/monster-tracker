@@ -98,7 +98,7 @@ function Home() {
                 <p>
                   {randomText(post.user_name || 'Someone', post.which)}
                 </p>
-                <p className="post-timestamp">{new Date(post.date).toLocaleString()}</p>
+                <p className="post-timestamp">{new Date(post.date).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })}</p>
                 {post.photo_url && (
                   <img src={post.photo_url} alt={post.which} className="post-image" />
                 )}
@@ -114,7 +114,7 @@ function Home() {
                 {post.photo_url && (
                     <img src={post.photo_url} alt="Custom Post" className="post-image" />
                 )}
-                <p className="post-timestamp">{new Date(post.date).toLocaleString()}</p>
+                <p className="post-timestamp">{new Date(post.date).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })}</p>
               </div>
             );
           }
