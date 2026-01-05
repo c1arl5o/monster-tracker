@@ -1,11 +1,18 @@
 import BurgerMenu from './BurgerMenu';
 import './Header.css';
 
-function Header({ title }) {
+function Header({ title, isAdmin, onAdminClick }) {
   return (
     <div className="home-header">
       <h1 className="home-title">{title}</h1>
-      <BurgerMenu />
+      <div className="header-actions">
+        {isAdmin && (
+          <button onClick={onAdminClick} className="admin-header-btn">
+            Admin
+          </button>
+        )}
+        <BurgerMenu />
+      </div>
     </div>
   );
 }
