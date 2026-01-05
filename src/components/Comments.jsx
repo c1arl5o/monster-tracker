@@ -56,14 +56,13 @@ function Comments({ postId, userId }) {
             <span className="comment-timestamp">{new Date(comment.created_at).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })}</span>
           </div>
         ))}
-        {comments.length === 0 && !loading && <p>No comments yet.</p>}
       </div>
 
       {userId && (
         <form onSubmit={handleAddComment} className="comment-form">
           <input
             type="text"
-            placeholder="Write a comment..."
+            placeholder="Schreibe einen Kommentar..."
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             onFocus={() => setIsInputFocused(true)}

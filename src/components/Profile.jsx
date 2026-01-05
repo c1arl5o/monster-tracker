@@ -129,7 +129,6 @@ function Profile() {
                   {chartData.datasets[0].data.reduce((a, b) => a + b, 0) * 160}
                   <span className="metric-unit"> mg</span>
                 </div>
-                <div className="metric-subtitle">Irgendwie muss man ja das Leben aushalten</div>
               </div>
               <div className="metric-item">
                 <div className="metric-label">Getrunkene Menge</div>
@@ -137,7 +136,6 @@ function Profile() {
                   {chartData.datasets[0].data.reduce((a, b) => a + b, 0) * 0.5}
                   <span className="metric-unit"> Liter</span>
                 </div>
-                <div className="metric-subtitle">So viel Liter habe ich getrunken</div>
               </div>
             </div>
           </>
