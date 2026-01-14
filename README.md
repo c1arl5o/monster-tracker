@@ -2,9 +2,9 @@
 
 A web application for tracking and sharing monster energy drink consumption, lol.
 
-Supabase for auth, db / Vercel for Deployment. Everything free though
+Supabase for auth & db / Vercel for deployment. Everything free though
 
-If you want to recreate it for your own friends group, just send me a DM on discord!
+If you want to recreate it for your own friends group, just send me a DM on discord (carlo2618)!
 
 ## Screenshots
 
