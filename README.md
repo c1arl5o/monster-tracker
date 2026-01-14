@@ -1,16 +1,18 @@
-# React + Vite
+# Monster Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application for tracking and sharing monster energy drink consumption, lol.
 
-Currently, two official plugins are available:
+Supabase for auth, db / Vercel for Deployment. Everything free though
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+If you want to recreate it for your own friends group, just send me a DM on discord (carlo2618)
 
-## React Compiler
+## Screenshots
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Feed
+![Feed View](src/assets/gh-pics/feed.jpg)
 
-## Expanding the ESLint configuration
+### Leaderboard
+![Leaderboard](src/assets/gh-pics/leaderboard.jpg)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Stats
+![Statistics](src/assets/gh-pics/stats.png)
