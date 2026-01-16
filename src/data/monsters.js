@@ -26,6 +26,7 @@ import JUICED_MONARCH_IMG from '../assets/product-images/JUICED_MONARCH.jpg';
 import JUICED_MIXXD_IMG from '../assets/product-images/JUICED_MIXXD.jpeg';
 import JUICED_KHAOTIC_IMG from '../assets/product-images/JUICED_KHAOTIC.jpg';
 import ULTRA_ROSA_IMG from '../assets/product-images/ULTRA_ROSA.jpg';
+import ULTRA_FANTASY_RUBY_RED_IMG from '../assets/product-images/ULTRA_FANTASY_RUBY_RED.jpeg';
 
 export const monsters = [
 
@@ -52,6 +53,7 @@ export const monsters = [
   { name: 'Ultra Rosa', image: ULTRA_ROSA_IMG },
   { name: 'Ultra Gold', image: ULTRA_GOLD_IMG },
   { name: 'Ultra Watermelon', image: ULTRA_WATERMELON_IMG },
+  { name: 'Ultra Fantasy Ruby Red', image: ULTRA_FANTASY_RUBY_RED_IMG },
 
   // Juiced
 
