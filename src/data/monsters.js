@@ -27,6 +27,7 @@ import JUICED_MIXXD_IMG from '../assets/product-images/JUICED_MIXXD.jpeg';
 import JUICED_KHAOTIC_IMG from '../assets/product-images/JUICED_KHAOTIC.jpg';
 import ULTRA_ROSA_IMG from '../assets/product-images/ULTRA_ROSA.jpg';
 import ULTRA_FANTASY_RUBY_RED_IMG from '../assets/product-images/ULTRA_FANTASY_RUBY_RED.jpeg';
+import JUICED_VIKINGBERRY_IMG from '../assets/product-images/JUICED_VIKINGBERRY.jpg';
 
 export const monsters = [
 
@@ -66,9 +67,8 @@ export const monsters = [
   { name: 'Juiced Monarch', image: JUICED_MONARCH_IMG },
   { name: 'Juiced Mixxd Punch', image: JUICED_MIXXD_IMG },
   { name: 'Juiced Khaotic', image: JUICED_KHAOTIC_IMG },
-
+  { name: 'Juiced Viking Berry', image: JUICED_VIKINGBERRY_IMG },
   // Rehab
 
   { name: 'Rehab Peach', image: REHAB_PEACH_IMG },
-  
 ];
